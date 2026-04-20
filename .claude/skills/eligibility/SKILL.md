@@ -76,7 +76,27 @@ Individuals who face a documented, credible threat to their life or safety.
 
 ---
 
-### Category 6: Other / Special Circumstances (אחר)
+### Category 6: IDF Combat Veteran (לוחם / משוחרר קרבי)
+Any Israeli who completed service in a qualifying IDF combat role and was honorably discharged. This is a recognized eligibility pathway under regulations updated in 2023.
+
+**Qualifying service:**
+- Served in an IDF combat role (לוחם — classification 07 or above, or special unit)
+- Served as a combat officer (קצין קרבי) at any rank
+- Medically discharged combat soldiers (soldiers who completed combat training and were discharged for medical reasons) — eligible since 2024 amendment
+- Women: eligible if completed combat service or national service (שירות לאומי) AND live/work in a designated eligible area
+
+**Age requirement:** 20+ (lower than the general 21+ minimum — IDF service waives the extra year)
+
+**Note:** Dishonorable discharge (שחרור בגנאי) disqualifies. Regular / medical discharge does not.
+
+**Evidence required:**
+- IDF discharge certificate (תעודת שחרור) showing combat classification/role
+- IDF permit from the IDF permit website (אישור צבאי) — required for some applicants; check at gov.il/idf-firearms-permit
+- For medically discharged soldiers: medical discharge documentation in addition to the above
+
+---
+
+### Category 7: Other / Special Circumstances (אחר)
 In exceptional cases, the Firearms Licensing Division may grant a license for other compelling security reasons not captured above.
 
 **Examples:** Isolated rural residents not in a defined settlement area who face documented security vulnerability; individuals with a strong security background (retired senior security officials) with a documented need.
@@ -96,7 +116,8 @@ Even if the user falls within an eligibility category, the following may result 
 | Mental health history | Psychiatric hospitalizations or diagnoses that indicate a risk to self or others |
 | Medical unfitness | Conditions affecting vision, cognition, or physical control (assessed during medical exam) |
 | Prior license revocation | Previous gun license revoked by authorities |
-| Age under 21 | Minimum age for most civilian categories |
+| Age under 21 | Minimum age for most civilian categories (20+ for IDF veterans) |
+| Dishonorable discharge | IDF dishonorable discharge (שחרור בגנאי) disqualifies combat veteran category |
 | Non-citizen / non-permanent resident | Must hold Israeli citizenship or permanent residency |
 
 Ask about these disqualifying factors sensitively. Frame them as "background questions the licensing authority will check."
@@ -120,25 +141,34 @@ Ask the following questions in sequence. One group at a time.
    - If the name matches a known defined settlement (see Category 1 list above): flag as likely Category 1.
    - If unsure: note you'll need to verify against the Ministry's official list.
 
-### Group 2 — Occupation and Role
+### Group 2 — Military Service (ask BEFORE occupation)
 
-4. "What is your current occupation?"
+4. "Did you serve in the IDF? If yes, was your role a combat role (לוחם)?"
+   - If yes, combat role: → **Category 6 (IDF Combat Veteran)** — HIGH confidence. Ask:
+     - "Were you honorably discharged (שחרור רגיל or מסיבות רפואיות)?" — dishonorable discharge disqualifies
+     - "Do you have your discharge certificate (תעודת שחרור)?"
+   - If yes, non-combat service: note they may still qualify under Category 6 if 2+ years served; flag as medium confidence
+   - If no service: continue to occupation questions
+
+### Group 3 — Occupation and Role
+
+5. "What is your current occupation?"
    - Security guard / head of security / KBT / armed transport → Category 2
    - Jewelry merchant / cash transporter → Category 3
    - Note any security-relevant role for later
 
-5. "Do you work in a role that requires carrying a weapon or transporting valuables?"
+6. "Do you work in a role that requires carrying a weapon or transporting valuables?"
    - If yes: confirm details and map to Category 2 or 3.
 
-### Group 3 — Special Circumstances
+### Group 4 — Special Circumstances
 
-6. "Are you a recognized Holocaust survivor?"
+7. "Are you a recognized Holocaust survivor?"
    - If yes → Category 4 (strong basis — proceed).
 
-7. "Have you received threats to your life or safety that have been reported to the police?"
+8. "Have you received threats to your life or safety that have been reported to the police?"
    - If yes → Category 5 candidate; ask for details (police complaint filed? case number?).
 
-### Group 4 — Background Check (Disqualifiers)
+### Group 5 — Background Check (Disqualifiers)
 
 Frame this group as: "I need to ask a few background questions that the licensing authority will check. These help me give you an honest assessment."
 
@@ -185,7 +215,7 @@ After the summary, output a structured block for the `gun-license` orchestrator:
 ```
 === ELIGIBILITY START ===
 eligible: <true | borderline | false>
-category: <SETTLEMENT | SECURITY_ROLE | VALUE_TRANSPORT | HOLOCAUST_SURVIVOR | DOCUMENTED_THREAT | OTHER>
+category: <SETTLEMENT | SECURITY_ROLE | VALUE_TRANSPORT | HOLOCAUST_SURVIVOR | DOCUMENTED_THREAT | IDF_COMBAT_VETERAN | OTHER>
 confidence: <high | medium | low>
 evidence_needed:
   - <document 1>
